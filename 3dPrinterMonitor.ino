@@ -43,6 +43,7 @@ void setup()
 
   strip.begin();
   strip.show();
+  strip.setBrightness(brightness);
 }
 
 //Push data
@@ -102,16 +103,11 @@ void loop()
       
       
   // Change color
-  for(int i=0; i<12; i++)
-  {
-    strip.setBrightness(brightness);
-
-    if(state == 2)
-      strip.setPixelColor(i, strip.Color(255, 0, 0));
-    else if(state == 1)
-      strip.setPixelColor(i, strip.Color(255, 255, 0));
-    else
-      strip.setPixelColor(i, strip.Color(0, 255, 0));
-  }
+  if(state == 2)
+    strip.fill(strip.Color(255, 0, 0));
+  else if(state == 1)
+    strip.fill(strip.Color(255, 255, 0));
+  else
+    strip.fill(strip.Color(0, 255, 0));
   strip.show();
 }
